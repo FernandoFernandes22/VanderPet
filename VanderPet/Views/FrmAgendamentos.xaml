@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VanderPet.Views.FrmAgendamentos"
+             Title="Agendamentos">
+
+    <Grid RowDefinitions="Auto, *, Auto" Padding="20" RowSpacing="15">
+
+        <!-- Cabeçalho -->
+        <Label Grid.Row="0" 
+               Text="VanderPET" 
+               FontSize="26" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               TextColor="#4A90E2" />
+
+        <!-- Mensagem de Sem Agendamentos -->
+        <VerticalStackLayout x:Name="LayoutSemAgendamentos" 
+                             Grid.Row="1" 
+                             VerticalOptions="Center" 
+                             Spacing="10"
+                             IsVisible="True">
+            <Label Text="Agendamentos" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" />
+
+            <Label Text="Você ainda não possui agendamentos." 
+                   FontSize="14" 
+                   TextColor="Gray" 
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+        <!-- Lista de Agendamentos -->
+        <CollectionView x:Name="CvAgendamentos" 
+                        Grid.Row="1" 
+                        IsVisible="False">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Stroke="#4A90E2" StrokeThickness="1" Margin="0,0,0,10" Padding="15">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10"/>
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="4">
+                            <!-- Linha do Nome do Pet e Botão Pequeno de Cancelar -->
+                            <Grid ColumnDefinitions="*, Auto">
+                                <HorizontalStackLayout Grid.Column="0" Spacing="5">
+                                    <Label Text="Pet:" FontAttributes="Bold" />
+                                    <Label Text="{Binding NomePet}" TextColor="#4A90E2" FontAttributes="Bold"/>
+                                </HorizontalStackLayout>
+
+                                <!-- Botão de Cancelar discreto e pequeno no canto -->
+                                <Button Grid.Column="1" 
+                                        Text="Cancelar" 
+                                        FontSize="11"
+                                        TextColor="Red"
+                                        BackgroundColor="Transparent"
+                                        HeightRequest="25"
+                                        Padding="5,0"
+                                        Margin="0"
+                                        Clicked="OnCancelarAgendamentoClicked"
+                                        CommandParameter="{Binding .}" />
+                            </Grid>
+
+                            <!-- Serviço e Porte -->
+                            <Label Text="{Binding Servico}" FontSize="14" />
+                            <Label Text="{Binding Porte}" FontSize="12" TextColor="Gray" />
+
+                            <!-- Data, Horário e Valor -->
+                            <HorizontalStackLayout Spacing="10" Margin="0,5,0,0">
+                                <Label Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}" FontSize="12" FontAttributes="Bold" />
+                                <Label Text="{Binding Horario}" FontSize="12" FontAttributes="Bold" TextColor="Green" />
+                                <Label Text="{Binding Valor, StringFormat='R$ {0:F2}'}" FontSize="12" FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Botão Novo Agendamento -->
+        <Border Grid.Row="2" Stroke="#4A90E2" StrokeThickness="1">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="8"/>
+            </Border.StrokeShape>
+            <Button Text="+ NOVO AGENDAMENTO" 
+                    Clicked="OnNovoAgendamentoClicked" 
+                    BackgroundColor="Transparent"
+                    TextColor="#4A90E2"
+                    FontAttributes="Bold"
+                    HeightRequest="50" />
+        </Border>
+
+    </Grid>
+</ContentPage>

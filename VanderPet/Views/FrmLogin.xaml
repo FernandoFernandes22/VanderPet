@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VanderPet.Views.FrmLogin"
+             NavigationPage.HasNavigationBar="False"
+             Title="Login">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15" VerticalOptions="Center">
+
+            <Label Text="VANDERPET" 
+                   FontSize="32" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#4A90E2"
+                   Margin="0,20,0,30" />
+
+            <Entry x:Name="TxtUsuario" 
+                   Placeholder="USUARIO" 
+                   FontSize="16" />
+
+            <Entry x:Name="TxtSenha" 
+                   Placeholder="SENHA" 
+                   IsPassword="True" 
+                   FontSize="16" />
+
+            <!-- Botão Entrar -->
+            <!-- Botão Entrar ajustado -->
+            <Border Stroke="#4A90E2" StrokeThickness="1" Padding="0" Margin="0,15,0,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8"/>
+                </Border.StrokeShape>
+                <Button Text="ENTRAR" 
+            Clicked="OnEntrarClicked" 
+            BackgroundColor="Transparent"
+            TextColor="#4A90E2"
+            FontAttributes="Bold"/>
+            </Border>
+
+            <!-- Botão Cadastrar -->
+            <Button Text="NÃO POSSUI CONTA? CADASTRE-SE" 
+                    Clicked="OnCadastrarClicked" 
+                    BackgroundColor="Transparent" 
+                    TextColor="Gray"
+                    FontSize="12" />
+
+            <!-- Botão Esqueci a Senha -->
+            <Button Text="ESQUECI MINHA SENHA" 
+                    Clicked="OnEsqueciSenhaClicked"
+                    BackgroundColor="Transparent" 
+                    TextColor="Gray"
+                    FontSize="12" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

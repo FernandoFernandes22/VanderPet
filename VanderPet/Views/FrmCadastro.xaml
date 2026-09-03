@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VanderPet.Views.FrmCadastro"
+             Title="Cadastro">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="12">
+
+            <Label Text="CADASTRO" 
+                   FontSize="28" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#4A90E2"
+                   Margin="0,10,0,15" />
+
+            <Entry x:Name="TxtNome" Placeholder="NOME" />
+            <Entry x:Name="TxtCpf" Placeholder="CPF" Keyboard="Numeric" />
+            <Entry x:Name="TxtEmail" Placeholder="E-mail" Keyboard="Email" />
+            <Entry x:Name="TxtTelefone" Placeholder="Telefone" Keyboard="Telephone" />
+            <Entry x:Name="TxtEndereco" Placeholder="Endereço" />
+            <Entry x:Name="TxtSenha" Placeholder="Senha" IsPassword="True" />
+            <Entry x:Name="TxtConfirmarSenha" Placeholder="Confirmar senha" IsPassword="True" />
+
+            <!-- Botão Cadastrar -->
+            <Border Stroke="#4A90E2" StrokeThickness="1" Margin="0,15,0,0">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8"/>
+                </Border.StrokeShape>
+                <Button Text="Cadastrar" 
+                        Clicked="OnCadastrarClicked" 
+                        BackgroundColor="Transparent"
+                        TextColor="#4A90E2"
+                        FontAttributes="Bold"/>
+            </Border>
+
+            <!-- Botão Voltar -->
+            <Button Text="Voltar" 
+                    Clicked="OnVoltarClicked" 
+                    BackgroundColor="Transparent" 
+                    TextColor="Gray"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

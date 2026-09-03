@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VanderPet.Views.FrmNovoAgendamento"
+             Title="Novo Agendamento">
+
+    <ScrollView Padding="25">
+        <VerticalStackLayout Spacing="12">
+
+            <Label Text="VanderPET" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#4A90E2" />
+
+            <Label Text="NOVO AGENDAMENTO" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   Margin="0,0,0,10" />
+
+            <!-- Selecionar Pet (Conectado com o evento de trocar seleção) -->
+            <Picker x:Name="PckPet" 
+                    Title="Selecione o Pet" 
+                    SelectedIndexChanged="OnPetSelectedIndexChanged" />
+
+            <!-- Porte do Pet com Preços -->
+            <Picker x:Name="PckPorte" Title="Porte do Pet (Valor)">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pequeno Porte - R$ 40,00</x:String>
+                        <x:String>Médio Porte - R$ 60,00</x:String>
+                        <x:String>Grande Porte - R$ 80,00</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Tipo de Serviço -->
+            <Picker x:Name="PckServico" Title="Tipo de Serviço">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Apenas Banho</x:String>
+                        <x:String>Apenas Tosa</x:String>
+                        <x:String>Banho e Tosa (Completo)</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Data do Agendamento -->
+            <Label Text="Data do Agendamento" FontSize="14" TextColor="Gray" Margin="0,5,0,0" />
+            <DatePicker x:Name="DtAgendamento" DateSelected="OnDataSelecionada" />
+
+            <!-- Horários Disponíveis -->
+            <Label Text="Horário Disponível" FontSize="14" TextColor="Gray" Margin="0,5,0,0" />
+            <Picker x:Name="PckHorarios" Title="Selecione um horário disponível" />
+
+            <!-- Observação -->
+            <Editor x:Name="TxtObservacao" Placeholder="Observações (ex: pet arredio, alergia...)" HeightRequest="80" />
+
+            <!-- Botões Cancelar e Confirmar -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,15,0,0">
+                <Button Grid.Column="0" 
+                        Text="Cancelar" 
+                        Clicked="OnCancelarClicked" 
+                        BackgroundColor="Transparent" 
+                        TextColor="Gray" />
+
+                <Border Grid.Column="1" Stroke="#4A90E2" StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+                    <Button Text="Confirmar" 
+                            Clicked="OnConfirmarClicked" 
+                            BackgroundColor="Transparent"
+                            TextColor="#4A90E2"
+                            FontAttributes="Bold" />
+                </Border>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

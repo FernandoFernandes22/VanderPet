@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="VanderPet.Views.FrmCadastroPet"
+             Title="Cadastrar Pet">
+
+    <ScrollView Padding="25">
+        <VerticalStackLayout Spacing="12">
+
+            <Label Text="VanderPET" 
+                   FontSize="24" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#4A90E2" />
+
+            <Label Text="Cadastrar Pet" 
+                   FontSize="20" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   Margin="0,0,0,10" />
+
+            <!-- Nome do Pet -->
+            <Entry x:Name="TxtNomePet" Placeholder="Nome do Pet" />
+
+            <!-- Espécie -->
+            <Picker x:Name="PckEspecie" Title="Espécie">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Cachorro</x:String>
+                        <x:String>Gato</x:String>
+                        <x:String>Ave</x:String>
+                        <x:String>Reptil</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Raça -->
+            <Entry x:Name="TxtRaca" Placeholder="Raça" />
+
+            <!-- Data de Nascimento -->
+            <Label Text="Data Nac" FontSize="14" TextColor="Gray" Margin="0,5,0,0" />
+            <DatePicker x:Name="DtNascimento" />
+
+            <!-- Sexo -->
+            <Picker x:Name="PckSexo" Title="Sexo">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Macho</x:String>
+                        <x:String>Fêmea</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <!-- Botões Cancelar e Cadastrar -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="15" Margin="0,15,0,0">
+                <Button Grid.Column="0" 
+                        Text="Cancelar" 
+                        Clicked="OnCancelarClicked" 
+                        BackgroundColor="Transparent" 
+                        TextColor="Gray" />
+
+                <Border Grid.Column="1" Stroke="#4A90E2" StrokeThickness="1">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8"/>
+                    </Border.StrokeShape>
+                    <Button Text="Cadastrar" 
+                            Clicked="OnCadastrarClicked" 
+                            BackgroundColor="Transparent"
+                            TextColor="#4A90E2"
+                            FontAttributes="Bold" />
+                </Border>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
