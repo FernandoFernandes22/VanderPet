@@ -2,17 +2,25 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="VanderPet.Views.FrmAgendamentos"
+             NavigationPage.HasNavigationBar="False"
              Title="Agendamentos">
 
     <Grid RowDefinitions="Auto, *, Auto" Padding="20" RowSpacing="15">
 
-        <!-- Cabeçalho -->
-        <Label Grid.Row="0" 
-               Text="VanderPET" 
-               FontSize="26" 
-               FontAttributes="Bold" 
-               HorizontalOptions="Center" 
-               TextColor="#4A90E2" />
+        <!-- Cabeçalho Organizado -->
+        <VerticalStackLayout Grid.Row="0" Spacing="5" Margin="0,0,0,10">
+            <Label Text="VanderPET" 
+                   FontSize="26" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="#4A90E2" />
+
+            <Label Text="AGENDAMENTOS" 
+                   FontSize="18" 
+                   FontAttributes="Bold" 
+                   HorizontalOptions="Center" 
+                   TextColor="White" />
+        </VerticalStackLayout>
 
         <!-- Mensagem de Sem Agendamentos -->
         <VerticalStackLayout x:Name="LayoutSemAgendamentos" 
@@ -20,11 +28,6 @@
                              VerticalOptions="Center" 
                              Spacing="10"
                              IsVisible="True">
-            <Label Text="Agendamentos" 
-                   FontSize="20" 
-                   FontAttributes="Bold" 
-                   HorizontalOptions="Center" />
-
             <Label Text="Você ainda não possui agendamentos." 
                    FontSize="14" 
                    TextColor="Gray" 
@@ -43,14 +46,13 @@
                         </Border.StrokeShape>
 
                         <VerticalStackLayout Spacing="4">
-                            <!-- Linha do Nome do Pet e Botão Pequeno de Cancelar -->
+                            <!-- Nome do Pet e Botão de Cancelar -->
                             <Grid ColumnDefinitions="*, Auto">
                                 <HorizontalStackLayout Grid.Column="0" Spacing="5">
                                     <Label Text="Pet:" FontAttributes="Bold" />
                                     <Label Text="{Binding NomePet}" TextColor="#4A90E2" FontAttributes="Bold"/>
                                 </HorizontalStackLayout>
 
-                                <!-- Botão de Cancelar discreto e pequeno no canto -->
                                 <Button Grid.Column="1" 
                                         Text="Cancelar" 
                                         FontSize="11"
